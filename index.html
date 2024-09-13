@@ -1,9 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expansão Urbana - RS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.1.1/bignumber.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.3.1/decimal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+  <style src="css.css"></style>
+
 </head>
 <body>
-  <h1>Nosso site vai ser esse</h1>
-  <p>👍</p>
+  <h1>Gráfico</h1>
+  <canvas id="grafico" width="400" height="200"></canvas>
+
+  <input type="range" id="slider" min="1985" max="2050" value="2024" step="1" style="width: 100%;">
+  <br>
+  <input type="number" id="qualano">
+  <br>
+  <input type="number" id="menorano" default=1985 onchange="escolherminimo()">
+  <input type="number" id="maiorano" default =2023 onchange="escolhermaximo()">
+
+
 </body>
+<script src="script.js"></script>
 </html>
