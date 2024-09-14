@@ -1,2 +1,31 @@
+.slider{
+    width:96.7%;
+}
+canvas{
+    width: 400;
+    height: 100;
+}
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+.slider{
+    width:82%;
+}
+canvas{
+    width: 400;
+    height: 250;
+}
+}
 
+#div1{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+input[type="number"]{
+    
+    text-align: center;
+}
+
+espacito{
+    padding-right: 50px;
+}
 

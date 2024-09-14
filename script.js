@@ -3,7 +3,10 @@ var valoresgrafico = []
 var max = document.getElementById("maiorano")
 var min = document.getElementById("menorano")
 max.value = 2050
-min.value = 1975
+min.value = 1970
+
+
+
 
 function gerardados(){
     max = document.getElementById("maiorano").value
@@ -95,14 +98,14 @@ grafico = new Chart(ctx, {
                 annotations: {
                     line1: {
                         type: 'line',
-                        xMin: 2000, // Ano onde a linha vertical começa
-                        xMax: 2000, // Ano onde a linha vertical termina
-                        borderColor: 'red',
+                        xMin: 2023, // Ano onde a linha vertical começa
+                        xMax: 2023, // Ano onde a linha vertical termina
+                        borderColor: 'rgba(50, 50, 50, 0.7)',
                         borderWidth: 2,
                         label: {
                             content: 'Linha Vertical',
                             enabled: true,
-                            position: 'top'
+                           
                         }
                     }
                 }
@@ -129,7 +132,7 @@ function atualizarGrafico() {
 
    
   }
-  
+
 
 
 
@@ -142,7 +145,8 @@ function escolhermaximo(){
     if(!max||max<2023){
         max1.value = 2023
     }
-    
+    slider.max = max
+    slider.min = min
     atualizarGrafico()
 }
 function escolherminimo(){
@@ -154,7 +158,49 @@ function escolherminimo(){
         min1.value = 1985
     }
     atualizarGrafico()
+    slider.max = max
+    slider.min = min
+
 }
+
+var slider = document.getElementById("slider")
+var inputslider = document.getElementById("qualano")
+inputslider.value = 2023
+
+
+function atualizarcomslider(){
+
+    slider = document.getElementById("slider")
+    inputslider = document.getElementById("qualano")
+
+    inputslider.value = document.getElementById("slider").value
+    grafico.options.plugins.annotation.annotations.line1.xMin = parseInt(inputslider.value)
+    grafico.options.plugins.annotation.annotations.line1.xMax = parseInt(inputslider.value)
+    grafico.update();
+
+    
+
+}
+
+function atualizarcominput(){
+
+    slider = document.getElementById("slider")
+    inputslider = document.getElementById("qualano")
+    max = parseInt(document.getElementById("maiorano").value)
+    min = parseInt(document.getElementById("menorano").value)
+    if(inputslider.value < min){
+        inputslider.value = min
+    }
+    if(inputslider.value > max){
+        inputslider.value = max
+    }
+    slider.value = inputslider.value
+    grafico.options.plugins.annotation.annotations.line1.xMin = parseInt(slider.value)
+    grafico.options.plugins.annotation.annotations.line1.xMax = parseInt(slider.value)
+    grafico.update();
+
+}
+
 
 
 

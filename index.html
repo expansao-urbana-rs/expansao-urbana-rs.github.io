@@ -8,19 +8,25 @@
   <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.1.1/bignumber.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.3.1/decimal.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
-  <style src="css.css"></style>
+  <link rel="stylesheet" href="css.css">
 
 </head>
 <body>
   <h1>Gráfico</h1>
-  <canvas id="grafico" width="400" height="200"></canvas>
+  <canvas id="grafico" ></canvas>
 
-  <input type="range" id="slider" min="1985" max="2050" value="2024" step="1" style="width: 100%;">
+  <espacito></espacito><input oninput="atualizarcomslider()" type="range" id="slider" class="slider" min="1970" max="2050" value="2024" step="1" >
   <br>
-  <input type="number" id="qualano">
-  <br>
-  <input type="number" id="menorano" default=1985 onchange="escolherminimo()">
-  <input type="number" id="maiorano" default =2023 onchange="escolhermaximo()">
+  <div id="div1">
+  <input type="number" id="qualano" default=2023 onchange="atualizarcominput()">
+  </div>
+
+ <br>
+
+  <div id="div1">
+  <span><input type="number" id="menorano" default=1970 onchange="escolherminimo()">
+  <input type="number" id="maiorano" default =2023 onchange="escolhermaximo()"></span>
+  </div>
 
 
 </body>
