@@ -4,6 +4,8 @@ var max = document.getElementById("maiorano")
 var min = document.getElementById("menorano")
 max.value = 2050
 min.value = 1970
+var equacao = document.getElementById('equacao')
+
 
 
 
@@ -98,8 +100,8 @@ grafico = new Chart(ctx, {
                 annotations: {
                     line1: {
                         type: 'line',
-                        xMin: 2023, // Ano onde a linha vertical começa
-                        xMax: 2023, // Ano onde a linha vertical termina
+                        xMin: 2023, 
+                        xMax: 2023,
                         borderColor: 'rgba(50, 50, 50, 0.7)',
                         borderWidth: 2,
                         label: {
@@ -163,9 +165,34 @@ function escolherminimo(){
 
 }
 
+
+
+function atualizarequacao(ano){
+    var valoreq = 310000.000000/(1 +211126966384146673735047964243099624931328.000000 * Math.exp(-0.047789 * ano))
+    document.getElementById('equacao').innerHTML = `  $$ \\textcolor{4BC0C0}{${valoreq.toFixed(2)}\\text{ha}} = \\frac{310000}{1 + 2.11 \\times 10^{41}  \\cdot e^{-0.047 \\times \\textcolor{4BC0C0}{${ano}}}} $$`
+    renderMathInElement(document.getElementById('equacao'))
+
+   
+    var indice = anosoriginais.indexOf(ano)
+   
+    if(valoresoriginais[indice]){
+        var mb1= document.getElementById('mb1')
+        var mb2= document.getElementById('mb2')
+        mb2.innerHTML = '<span>'+ano+'</span>'
+     mb1.innerHTML = '<span>'+valoresoriginais[indice]+'ha</span>'
+    }
+    else{
+        document.getElementById('esquecidisso').innerHTML = '<span class="vermelho" id="mb1"></span> -- <span class="vermelho" id="mb2"></span>'
+    }
+}
+
+
+
+
+
 var slider = document.getElementById("slider")
 var inputslider = document.getElementById("qualano")
-inputslider.value = 2023
+
 
 
 function atualizarcomslider(){
@@ -179,8 +206,12 @@ function atualizarcomslider(){
     grafico.update();
 
     
-
+    atualizarequacao(parseInt(inputslider.value))
 }
+
+
+
+
 
 function atualizarcominput(){
 
@@ -199,27 +230,8 @@ function atualizarcominput(){
     grafico.options.plugins.annotation.annotations.line1.xMax = parseInt(slider.value)
     grafico.update();
 
+    atualizarequacao(parseInt(slider.value))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const valoresoriginais = [
@@ -242,3 +254,4 @@ const anosoriginais =[
 gerardados()
 gerarvaloresgrafico()
 gerargrafico()
+atualizarcomslider()

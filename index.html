@@ -8,25 +8,54 @@
   <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.1.1/bignumber.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.3.1/decimal.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
   <link rel="stylesheet" href="css.css">
 
 </head>
 <body>
-  <h1>Gráfico</h1>
+  <h1>
+  <div id="cabecalho">
+    <img src="imagens\IFSullogo.png" style="height: 50px; float: left; margin-left: 3px;" alt="">
+    <div style="width: calc(100% - 500 px);">Crescimento da área urbanizada no Rio Grande do Sul.</div>
+    <img src="imagens\SNCTlogo.png" style="height: 50px; float: right; margin-right: 3px;" alt="">
+  </div>
+
+ 
+  <divisoria id="divisoria"></divisoria>
+  </h1>
   <canvas id="grafico" ></canvas>
 
-  <espacito></espacito><input oninput="atualizarcomslider()" type="range" id="slider" class="slider" min="1970" max="2050" value="2024" step="1" >
+  <espacito></espacito><input oninput="atualizarcomslider()" type="range" id="slider" class="slider" min="1970" max="2050" value="2023" step="1" >
   <br>
-  <div id="div1">
+  <div id="div1" style="margin-bottom: 3px;">
   <input type="number" id="qualano" default=2023 onchange="atualizarcominput()">
   </div>
 
- <br>
-
   <div id="div1">
-  <span><input type="number" id="menorano" default=1970 onchange="escolherminimo()">
-  <input type="number" id="maiorano" default =2023 onchange="escolhermaximo()"></span>
+  <input type="number" id="menorano" onchange="escolherminimo()" style="margin-right: 7px;">
+  <div class="arrow"></div>
+  <input type="number" id="maiorano"  onchange="escolhermaximo()" style="margin-left: 7px;" >
   </div>
+
+  <br>
+
+  <span style="padding: 5px; font-weight: bold;">Equação:</span>
+  <p id="equacao" > 
+  </p>
+
+  <br>
+  <span id="dadosmb"></span>
+  <br>
+  <br>
+  <span  style="padding: 5px; font-weight: bold;">Dados do MapBiomas:</span>
+  <br><br>
+  <span id="esquecidisso">
+  <span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>
+  </span>
 
 
 </body>

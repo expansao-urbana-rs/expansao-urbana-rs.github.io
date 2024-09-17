@@ -1,9 +1,15 @@
+body{
+font-size: 14px;
+text-align: center;
+}
+
 .slider{
     width:96.7%;
 }
 canvas{
     width: 400;
     height: 100;
+    font-family: Arial, Helvetica, sans-serif;
 }
 @media only screen and (max-width: 768px) and (orientation: portrait) {
 .slider{
@@ -12,6 +18,7 @@ canvas{
 canvas{
     width: 400;
     height: 250;
+    font-family: Arial, Helvetica, sans-serif;
 }
 }
 
@@ -19,13 +26,78 @@ canvas{
     display: flex;
     justify-content: center; 
     align-items: center;
+    width: 100%;
 }
+
 input[type="number"]{
-    
+    width: 70px;
+    height: 11px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
 }
 
 espacito{
     padding-right: 50px;
 }
+#cabecalho{
+    
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
 
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    border-top: 1px solid rgb(161, 161, 161);
+    font-size: 17px;
+
+    display: flex;
+}
+
+
+
+
+.arrow {
+    display: inline-block;
+    width: 150px;
+    height: 3px;
+    background-color: black;
+    position: relative;
+    
+}
+
+.arrow::before, .arrow::after {
+    content: '';
+    position: absolute;
+    top: -5px; 
+    width: 10px;
+    height: 10px;
+    border: solid black;
+}
+
+.arrow::before {
+    left: 0;
+    border-width: 0 2px 2px 0;
+    transform: rotate(135deg);
+}
+
+.arrow::after {
+    right: 0;
+    border-width: 0 0 2px 2px;
+    transform: rotate(-135deg);
+}
+
+#dadosmb{
+    display: inline-block;
+    width: 250px;
+    height: 1px;
+    background-color: rgb(161, 161, 161);
+    position: relative;
+}
+.vermelho{
+    color:  rgba(255, 99, 132, 1);
+}
