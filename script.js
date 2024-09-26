@@ -5,6 +5,7 @@ var min = document.getElementById("menorano")
 max.value = 2050
 min.value = 1970
 var equacao = document.getElementById('equacao')
+var pcterro = document.getElementById('pcterro')
 
 
 
@@ -176,13 +177,22 @@ function atualizarequacao(ano){
     var indice = anosoriginais.indexOf(ano)
    
     if(valoresoriginais[indice]){
+        document.getElementById('esquecidisso').innerHTML = '<span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>'
+        var mb1= document.getElementById('mb1')
+        var mb2= document.getElementById('mb2')
+        mb2.innerHTML = '<span>'+ano+'</span>'
+        mb1.innerHTML = '<span>'+valoresoriginais[indice]+'ha</span>'
+     var porcentagem = Math.abs(valoresoriginais[indice] - valoreq)/valoresoriginais[indice]*100
+     pcterro.innerHTML = `$$ \\textcolor{009bff}{${porcentagem.toFixed(2)}\\%} = \\frac{|\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}} - \\textcolor{4BC0C0}{${valoreq.toFixed(2)}}|}{\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}}} $$`;
+     renderMathInElement(document.getElementById('pcterro'));
+
+    }
+    else{
+        document.getElementById('esquecidisso').innerHTML = '<span class="vermelho" id="mb1"></span> -- <span class="vermelho" id="mb2"></span>'
         var mb1= document.getElementById('mb1')
         var mb2= document.getElementById('mb2')
         mb2.innerHTML = '<span>'+ano+'</span>'
      mb1.innerHTML = '<span>'+valoresoriginais[indice]+'ha</span>'
-    }
-    else{
-        document.getElementById('esquecidisso').innerHTML = '<span class="vermelho" id="mb1"></span> -- <span class="vermelho" id="mb2"></span>'
     }
 }
 
@@ -232,6 +242,7 @@ function atualizarcominput(){
 
     atualizarequacao(parseInt(slider.value))
 }
+
 
 
 const valoresoriginais = [
