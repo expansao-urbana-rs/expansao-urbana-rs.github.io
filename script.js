@@ -189,10 +189,7 @@ function atualizarequacao(ano){
     }
     else{
         document.getElementById('esquecidisso').innerHTML = '<span class="vermelho" id="mb1"></span> -- <span class="vermelho" id="mb2"></span>'
-        var mb1= document.getElementById('mb1')
-        var mb2= document.getElementById('mb2')
-        mb2.innerHTML = '<span>'+ano+'</span>'
-     mb1.innerHTML = '<span>'+valoresoriginais[indice]+'ha</span>'
+        pcterro.innerHTML = '--'
     }
 }
 
