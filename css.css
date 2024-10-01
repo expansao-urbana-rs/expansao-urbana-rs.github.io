@@ -35,7 +35,16 @@ input[type="number"]{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
+    font-weight: lighter;
+    border-radius: 1px;
+    box-shadow: none;
+
 }
+input[type="number"]:hover{
+    border-color: rgb(167, 167, 167);
+    box-shadow: none;
+}
+
 
 espacito{
     padding-right: 50px;
@@ -100,4 +109,67 @@ espacito{
 }
 .vermelho{
     color:  rgba(255, 99, 132, 1);
+}
+
+@media only screen and (min-width: 768px){
+.grafico{
+    width: 100%;
+    
+
+
+}
+
+
+.slider{
+    width: calc(98% - 48px);
+}
+body{
+    font-size: 20px;
+    text-align: center;
+    }
+
+#cabecalho{
+    
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    border-top: 1px solid rgb(161, 161, 161);
+    font-size: 17px;
+
+    display: flex;
+}
+
+espacito{
+    padding-right: 48px;
+}
+input[type="number"]{
+    width: 120px;
+    height: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+
+
+.esquerda {
+    float: left;
+    width: 50%; 
+}
+.direita {
+    float: right; 
+    width: 50%;
+}
+#divmestra::after {
+    content: '';
+    display: table;
+    clear: both;
+}
 }
