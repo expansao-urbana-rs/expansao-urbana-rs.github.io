@@ -1,3 +1,122 @@
+const ohtml = document.getElementById('conteudo');
+const htmlCelular = `
+
+<div class="grafico"><canvas id="grafico"></canvas></div>
+
+<espacito></espacito><input oninput="atualizarcomslider()" type="range" id="slider" class="slider" min="1970" max="2050" value="2023" step="1">
+<br>
+<div id="div1" style="margin-bottom: 3px;">
+  <input type="number" id="qualano" default="2023" onchange="atualizarcominput()">
+</div>
+
+<div id="div1">
+  <input type="number" id="menorano" onchange="escolherminimo()" style="margin-right: 7px;">
+  <div class="arrow"></div>
+  <input type="number" id="maiorano" onchange="escolhermaximo()" style="margin-left: 7px;">
+</div>
+
+<br>
+
+<span style="padding: 5px; font-weight: bold;">Equação:</span>
+<p id="equacao"></p>
+
+<br>
+<span id="dadosmb"></span>
+<br>
+<br>
+
+<span style="padding: 5px; font-weight: bold;">Dados do MapBiomas:</span>
+<br><br>
+<span id="esquecidisso">
+  <span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>
+</span>
+
+<br><br><br>
+<span id="dadosmb"></span>
+<br><br>
+
+<span style="padding: 5px; font-weight: bold;">Porcentagem de erro:</span>
+<br>
+<p id="pcterro"></p>
+<br><br>
+<span id="dadosmb" style="width: 85%;"></span>
+`;
+
+const htmlPc = `
+
+<div class="divmestra">
+<div class ='esquerda'>
+
+
+<div class="grafico"><canvas id="grafico"></canvas></div>
+<espacito></espacito><input oninput="atualizarcomslider()" type="range" id="slider" class="slider" min="1970" max="2050" value="2023" step="1">
+<br>
+<br>
+<div id="div1">
+  <input type="number" id="menorano" onchange="escolherminimo()" style="margin-right: 7px;">
+  <div class="arrow" style="width: 300px;"></div>
+  <input type="number" id="maiorano" onchange="escolhermaximo()" style="margin-left: 7px;">
+</div>
+<br>
+<div id="div1" style="margin-bottom: 3px;">
+  <input type="number" id="qualano" default="2023" onchange="atualizarcominput()">
+</div>
+
+</div>
+<div class="direita">
+
+
+
+
+
+
+<br>
+
+<span style="padding: 5px; font-weight: bold;">Equação:</span>
+<p id="equacao"></p>
+
+<br>
+<span id="dadosmb"></span>
+<br>
+<br>
+
+<span style="padding: 5px; font-weight: bold;">Dados do <a href="https://plataforma.brasil.mapbiomas.org/cobertura?activeBaseMap=9&layersOpacity=100&activeModule=coverage&activeModuleContent=coverage%3Acoverage_main&activeYear=2023&mapPosition=-15.072124%2C-51.459961%2C4&timelineLimitsRange=1985%2C2023&baseParams[territoryType]=1&baseParams[territory]=10001&baseParams[territories]=10001%3BBrasil%3B1%3BPa%C3%ADs%3B0%3B0%3B0%3B0&baseParams[activeClassTreeOptionValue]=default&baseParams[activeClassTreeNodeIds]=1%2C7%2C8%2C9%2C10%2C11%2C2%2C12%2C13%2C14%2C15%2C16%2C3%2C18%2C19%2C28%2C30%2C31%2C32%2C33%2C34%2C29%2C35%2C36%2C37%2C38%2C20%2C21%2C4%2C22%2C23%2C24%2C25%2C5%2C26%2C27%2C6&baseParams[activeSubmodule]=coverage_main&baseParams[yearRange]=1985-2023">MapBiomas <img src="imagens\MapBiomas.png" style="height: 14px;" ></a>:</span>
+<br><br>
+<span id="esquecidisso">
+  <span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>
+</span>
+
+<br><br><br>
+<span id="dadosmb"></span>
+<br><br>
+
+<span style="padding: 5px; font-weight: bold;">Porcentagem de erro:</span>
+<br>
+<p id="pcterro"></p>
+<br><br>
+
+  
+  </div>
+
+</div>
+`;
+    
+        if (window.innerWidth <= 768) {
+            ohtml.innerHTML = htmlCelular
+        } else {
+
+            ohtml.innerHTML = htmlPc
+        }
+    
+        
+
+
+
+
+
+
+
+
 var anosgrafico = []
 var valoresgrafico = []
 var max = document.getElementById("maiorano")
@@ -170,7 +289,7 @@ function escolherminimo(){
 
 function atualizarequacao(ano){
     var valoreq = 310000.000000/(1 +211126966384146673735047964243099624931328.000000 * Math.exp(-0.047789 * ano))
-    document.getElementById('equacao').innerHTML = `  $$ \\textcolor{4BC0C0}{${valoreq.toFixed(2)}\\text{ha}} = \\frac{310000}{1 + 2.11 \\times 10^{41}  \\cdot e^{-0.047 \\times \\textcolor{4BC0C0}{${ano}}}} $$`
+    document.getElementById('equacao').innerHTML = `  $$ \\textcolor{4BC0C0}{${valoreq.toFixed(2)}\\text{ ha}} = \\frac{310000}{1 + 2.11 \\times 10^{41}  \\cdot e^{-0.047 \\times \\textcolor{4BC0C0}{${ano}}}} $$`
     renderMathInElement(document.getElementById('equacao'))
 
    
@@ -181,9 +300,9 @@ function atualizarequacao(ano){
         var mb1= document.getElementById('mb1')
         var mb2= document.getElementById('mb2')
         mb2.innerHTML = '<span>'+ano+'</span>'
-        mb1.innerHTML = '<span>'+valoresoriginais[indice]+'ha</span>'
+        mb1.innerHTML = '<span>'+valoresoriginais[indice]+' ha</span>'
      var porcentagem = Math.abs(valoresoriginais[indice] - valoreq)/valoresoriginais[indice]*100
-     pcterro.innerHTML = `$$ \\textcolor{009bff}{${porcentagem.toFixed(2)}\\%} = \\frac{|\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}} - \\textcolor{4BC0C0}{${valoreq.toFixed(2)}}|}{\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}}} $$`;
+     pcterro.innerHTML = `$$ \\textcolor{009bff}{${porcentagem.toFixed(2)}\\%} = \\frac{|\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}} - \\textcolor{4BC0C0}{${valoreq.toFixed(2)}}|}{\\textcolor{FF6384}{${valoresoriginais[anosoriginais.indexOf(ano)]}} } \\times 100 $$`;
      renderMathInElement(document.getElementById('pcterro'));
 
     }
@@ -258,6 +377,7 @@ const anosoriginais =[
     2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 
     2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023
 ];
+
 
 gerardados()
 gerarvaloresgrafico()
