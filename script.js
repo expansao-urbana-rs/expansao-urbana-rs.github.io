@@ -25,7 +25,7 @@ const htmlCelular = `
 <br>
 <br>
 
-<span style="padding: 5px; font-weight: bold;">Dados do MapBiomas:</span>
+<span style="padding: 5px; font-weight: bold;">Dados do <a href="https://plataforma.brasil.mapbiomas.org/cobertura?activeBaseMap=9&layersOpacity=100&activeModule=coverage&activeModuleContent=coverage%3Acoverage_main&activeYear=2023&mapPosition=-15.072124%2C-51.459961%2C4&timelineLimitsRange=1985%2C2023&baseParams[territoryType]=1&baseParams[territory]=10001&baseParams[territories]=10001%3BBrasil%3B1%3BPa%C3%ADs%3B0%3B0%3B0%3B0&baseParams[activeClassTreeOptionValue]=default&baseParams[activeClassTreeNodeIds]=1%2C7%2C8%2C9%2C10%2C11%2C2%2C12%2C13%2C14%2C15%2C16%2C3%2C18%2C19%2C28%2C30%2C31%2C32%2C33%2C34%2C29%2C35%2C36%2C37%2C38%2C20%2C21%2C4%2C22%2C23%2C24%2C25%2C5%2C26%2C27%2C6&baseParams[activeSubmodule]=coverage_main&baseParams[yearRange]=1985-2023">MapBiomas <img src="imagens/MapBiomas.png" style="height: 14px;" alt="" ></a>:</span>
 <br><br>
 <span id="esquecidisso">
   <span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>
@@ -80,7 +80,7 @@ const htmlPc = `
 <br>
 <br>
 
-<span style="padding: 5px; font-weight: bold;">Dados do <a href="https://plataforma.brasil.mapbiomas.org/cobertura?activeBaseMap=9&layersOpacity=100&activeModule=coverage&activeModuleContent=coverage%3Acoverage_main&activeYear=2023&mapPosition=-15.072124%2C-51.459961%2C4&timelineLimitsRange=1985%2C2023&baseParams[territoryType]=1&baseParams[territory]=10001&baseParams[territories]=10001%3BBrasil%3B1%3BPa%C3%ADs%3B0%3B0%3B0%3B0&baseParams[activeClassTreeOptionValue]=default&baseParams[activeClassTreeNodeIds]=1%2C7%2C8%2C9%2C10%2C11%2C2%2C12%2C13%2C14%2C15%2C16%2C3%2C18%2C19%2C28%2C30%2C31%2C32%2C33%2C34%2C29%2C35%2C36%2C37%2C38%2C20%2C21%2C4%2C22%2C23%2C24%2C25%2C5%2C26%2C27%2C6&baseParams[activeSubmodule]=coverage_main&baseParams[yearRange]=1985-2023">MapBiomas <img src="imagens\MapBiomas.png" style="height: 14px;" ></a>:</span>
+<span style="padding: 5px; font-weight: bold;">Dados do <a href="https://plataforma.brasil.mapbiomas.org/cobertura?activeBaseMap=9&layersOpacity=100&activeModule=coverage&activeModuleContent=coverage%3Acoverage_main&activeYear=2023&mapPosition=-15.072124%2C-51.459961%2C4&timelineLimitsRange=1985%2C2023&baseParams[territoryType]=1&baseParams[territory]=10001&baseParams[territories]=10001%3BBrasil%3B1%3BPa%C3%ADs%3B0%3B0%3B0%3B0&baseParams[activeClassTreeOptionValue]=default&baseParams[activeClassTreeNodeIds]=1%2C7%2C8%2C9%2C10%2C11%2C2%2C12%2C13%2C14%2C15%2C16%2C3%2C18%2C19%2C28%2C30%2C31%2C32%2C33%2C34%2C29%2C35%2C36%2C37%2C38%2C20%2C21%2C4%2C22%2C23%2C24%2C25%2C5%2C26%2C27%2C6&baseParams[activeSubmodule]=coverage_main&baseParams[yearRange]=1985-2023">MapBiomas <img src="imagens/MapBiomas.png" style="height: 14px;" alt="" ></a>:</span>
 <br><br>
 <span id="esquecidisso">
   <span class="vermelho" id="mb1"></span> em <span class="vermelho" id="mb2"></span>
@@ -101,17 +101,43 @@ const htmlPc = `
 </div>
 `;
     
+if (window.innerWidth <= 768) {
+    ohtml.innerHTML = htmlCelular
+} else {
+
+    ohtml.innerHTML = htmlPc
+}
+function atualizarbody(){
         if (window.innerWidth <= 768) {
             ohtml.innerHTML = htmlCelular
         } else {
 
             ohtml.innerHTML = htmlPc
         }
-    
+
+        max = document.getElementById("maiorano")
+        min = document.getElementById("menorano")
+        max.value = 2050
+        min.value = 1970
+
+        equacao = document.getElementById('equacao')
+        pcterro = document.getElementById('pcterro')
+        ctx = document.getElementById('grafico').getContext('2d')
+        slider = document.getElementById("slider")
+        inputslider = document.getElementById("qualano")
+
         
 
-
-
+        gerardados()
+        gerarvaloresgrafico()
+        gerargrafico()
+        atualizarcomslider()
+    }
+ 
+ 
+        
+ window.addEventListener('resize',  atualizarbody)
+ window.addEventListener('orientationchange', atualizarbody);
 
 
 
