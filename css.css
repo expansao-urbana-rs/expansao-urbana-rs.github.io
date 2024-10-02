@@ -144,6 +144,11 @@ body{
 
     display: flex;
 }
+.textocabecalho{
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: larger;
+}
 
 espacito{
     padding-right: 48px;
@@ -161,10 +166,12 @@ input[type="number"]{
 .esquerda {
     float: left;
     width: 50%; 
+   
 }
 .direita {
     float: right; 
-    width: 50%;
+    width: 40%;
+    border-left: 1px solid rgb(161, 161, 161);
 }
 #divmestra::after {
     content: '';
