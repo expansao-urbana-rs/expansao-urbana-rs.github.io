@@ -108,12 +108,7 @@ if (window.innerWidth <= 768) {
     ohtml.innerHTML = htmlPc
 }
 function atualizarbody(){
-        if (window.innerWidth <= 768) {
-            ohtml.innerHTML = htmlCelular
-        } else {
-
-            ohtml.innerHTML = htmlPc
-        }
+    
 
         max = document.getElementById("maiorano")
         min = document.getElementById("menorano")
